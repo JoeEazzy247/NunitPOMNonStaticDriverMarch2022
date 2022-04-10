@@ -17,10 +17,10 @@ namespace NunitPOMNonStaticDriverMarch2022.utilities
             Wait.Until(ExpectedConditions.ElementToBeClickable(by));
         }
 
-        //public static void WaitForAndGettext(IWebDriver driver, IWebElement by, string text)
-        //{
-        //    var Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-        //    Wait.Until(ExpectedConditions.TextToBePresentInElementValue(by, text));
-        //}
+        public static void WaitForAndGettext(IWebDriver? driver, By by)
+        {
+            var Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            Wait.Until(ExpectedConditions.ElementIsVisible(by));
+        }
     }
 }
