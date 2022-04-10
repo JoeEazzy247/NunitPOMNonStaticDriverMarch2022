@@ -38,7 +38,10 @@ namespace NunitProjectNonStaticDriverPOM.TestModules
             _loginPage?.ClickLogin();
             var txtValue = _loginPage?.GetLoginHeaderTxt();
              Assert.AreEqual("Welcome,\r\nLogin in Book Store", txtValue, "Values are not equal");
-            Thread.Sleep(5000);
+            _loginPage?.EnterCredentials();
+            var usernamelbl = _loginPage?.IstextDisplayed();
+            Assert.AreEqual(TestContext.Parameters["Username"], usernamelbl, "values not equal");
+           Thread.Sleep(5000);
         }
     }
 }

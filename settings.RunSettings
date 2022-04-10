@@ -2,5 +2,7 @@
 <RunSettings>
 	<TestRunParameters>
 		<Parameter name ="demoqaUrl" value="https://demoqa.com" />
+		<Parameter name ="Username" value="JEAutoTest" />
+		<Parameter name ="Password" value="Admin123!" />
 	</TestRunParameters>
 </RunSettings>
