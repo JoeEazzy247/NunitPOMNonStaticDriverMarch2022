@@ -41,11 +41,11 @@ namespace NUnitProjectPOM.PageObjects
             driver?.FindElement(login).Click();
         }
 
-        public string IstextDisplayed()
+        public string? IstextDisplayed()
         {
-            var text = driver?.FindElement(UserNameLbl);
-            //WaitExtensions.WaitForAndGettext(driver,text, TestContext.Parameters["Username"]);
-            return text.Text;
+            IWebElement? text = driver?.FindElement(UserNameLbl);
+            WaitExtensions.WaitForAndGettext(driver, UserNameLbl);
+            return text?.Text;
         }
     }
 }
