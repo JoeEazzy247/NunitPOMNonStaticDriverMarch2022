@@ -27,13 +27,13 @@ namespace NUnitProjectPOM
 
         public IWebDriver? GetDriver()
         {
-            //if (driver != null)
-            //{
-            //    return driver;
-            //}
-            //return driver = SelectBrowser(BrowserType.chrome);
+            if (driver != null)
+            {
+                return driver;
+            }
+            return driver = SelectBrowser(BrowserType.chrome);
             //tenary if statement
-            return driver != null ? driver : driver = SelectBrowser(BrowserType.chrome);
+            //return driver != null ? driver : driver = SelectBrowser(BrowserType.chrome);
         }
 
         [SetUp]
