@@ -25,21 +25,23 @@ namespace NUnitProjectPOM
                 _ => throw new NotFoundException("No such browser")
             };
 
-        public IWebDriver GetDriver()
+        public IWebDriver? GetDriver()
         {
-            if (driver != null)
-            {
-                return driver;
-            }
-            return driver = SelectBrowser(BrowserType.chrome);
+            //if (driver != null)
+            //{
+            //    return driver;
+            //}
+            //return driver = SelectBrowser(BrowserType.chrome);
+            //tenary if statement
+            return driver != null ? driver : driver = SelectBrowser(BrowserType.chrome);
         }
 
         [SetUp]
         public void Start()
         {
             driver = GetDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(Url);
+            driver?.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl(TestContext.Parameters["demoqaUrl"]);
             driver.Manage().Timeouts().ImplicitWait =
                 TimeSpan.FromSeconds(20);
         }
@@ -47,11 +49,15 @@ namespace NUnitProjectPOM
         [TearDown]
         public void QuitBrowser()
         {
-            driver?.Quit();
+            if (driver != null)
+            {
+                driver.Quit();
+            }
+            driver = null;
         }
 
-        private static string Url => 
-            TestContext.Parameters["demoqaUrl"]
-                ?? throw new NotImplementedException("key not found.");
+        //private static string Url => 
+        //    TestContext.Parameters["demoqaUrl"]
+        //        ?? throw new NotImplementedException("key not found.");
     }
 }
