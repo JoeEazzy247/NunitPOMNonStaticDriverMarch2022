@@ -47,11 +47,7 @@ namespace NUnitProjectPOM
         [TearDown]
         public void QuitBrowser()
         {
-            if (driver !=null)
-            {
-                driver.Quit();
-            }
-            driver = null;
+            driver?.Quit();
         }
 
         private static string Url => 
